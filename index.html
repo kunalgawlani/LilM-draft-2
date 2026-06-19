@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LILM Digital Services Limited — Kenya's Telecom Content Platform</title>
+  <meta name="description" content="A unified platform bridging advertisers, publishers, and content ecosystems to maximize reach, engagement, and monetization through compliant telecom channels." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: {
+              deep: '#080e1a',
+              base: '#0a1220',
+              mid: '#0f1b31',
+              elevated: '#111d35',
+              card: '#152040',
+            },
+            gold: {
+              rich: '#ba8e42',
+              mid: '#d8b56d',
+              light: '#f9edb9',
+              cream: '#fff6cf',
+            },
+            silver: '#c8cdd2',
+          },
+          fontFamily: {
+            display: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            body: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 140%; }
+    body {
+      margin: 0;
+      background-color: #0a1220;
+      color: #c8cdd2;
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Gold Gradient Text ── */
+    .gold-text {
+      background: linear-gradient(95deg, #ba8e42 0%, #f9edb9 55%, #fff6cf 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Noise Texture ── */
+    .noise::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+      opacity: 0.055;
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(26px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes breathe {
+      0%, 100% { opacity: 0.10; transform: scale(1); }
+      50%       { opacity: 0.16; transform: scale(1.04); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(186,142,66,0); }
+      50%       { box-shadow: 0 0 0 6px rgba(186,142,66,0.12); }
+    }
+
+    .anim-up   { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .anim-up-1 { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.12s forwards; }
+    .anim-up-2 { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.24s forwards; }
+    .anim-up-3 { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.38s forwards; }
+    .anim-up-4 { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.52s forwards; }
+    .anim-up-5 { opacity: 0; animation: fadeSlideUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.66s forwards; }
+
+    .breathe { animation: breathe 8s ease-in-out infinite; }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ── Reduced Motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ── Eyebrow ── */
+    .eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #d8b56d;
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.875rem;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: linear-gradient(130deg, #ba8e42 0%, #d8b56d 45%, #f9edb9 100%);
+      color: #080e1a;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+    .btn-primary:hover  { opacity: 0.88; transform: translateY(-1px); }
+    .btn-primary:focus-visible { outline: 2px solid #f9edb9; outline-offset: 3px; }
+    .btn-primary:active { transform: translateY(0); opacity: 1; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.875rem;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      background: transparent;
+      color: #d8b56d;
+      border: 1px solid rgba(216,181,109,0.35);
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+    .btn-ghost:hover  { background: rgba(216,181,109,0.07); border-color: rgba(216,181,109,0.6); transform: translateY(-1px); }
+    .btn-ghost:focus-visible { outline: 2px solid #d8b56d; outline-offset: 3px; }
+    .btn-ghost:active { transform: translateY(0); }
+
+    /* ── Nav ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(8,14,26,0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    #navbar.scrolled {
+      border-color: rgba(216,181,109,0.1);
+      box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+    }
+    .nav-link {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: rgba(200,205,210,0.75);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; width: 0; height: 1px;
+      background: linear-gradient(90deg, #ba8e42, #f9edb9);
+      transition: width 0.25s cubic-bezier(0.22,1,0.36,1);
+    }
+    .nav-link:hover { color: #f9edb9; }
+    .nav-link:hover::after { width: 100%; }
+    .nav-link:focus-visible { outline: 2px solid #d8b56d; outline-offset: 4px; border-radius: 2px; }
+
+    /* ── Feature Card ── */
+    .card {
+      background: #0e1a2e;
+      border: 1px solid rgba(216,181,109,0.09);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25), 0 1px 0 rgba(216,181,109,0.04) inset;
+    }
+    .card:hover {
+      border-color: rgba(216,181,109,0.22);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 1px 0 rgba(216,181,109,0.06) inset;
+    }
+    .card-elevated {
+      background: #111d35;
+    }
+
+    #problem .card:hover,
+    #services .card:hover {
+      border-color: rgba(216,181,109,0.65);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 18px rgba(216,181,109,0.12), 0 1px 0 rgba(249,237,185,0.1) inset;
+    }
+
+    /* ── Icon Container ── */
+    .icon-ring {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(186,142,66,0.07);
+      border: 1px solid rgba(186,142,66,0.18);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    /* ── Gold Pill Tag ── */
+    .gold-tag {
+      display: inline-block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: #d8b56d;
+      background: rgba(216,181,109,0.08);
+      border: 1px solid rgba(216,181,109,0.15);
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+    }
+
+    /* ── Stats Grid ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: rgba(216,181,109,0.07);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(216,181,109,0.1);
+    }
+    .stats-grid > div {
+      background: #080e1a;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      border-right: 1px solid rgba(216,181,109,0.07);
+    }
+    .stats-grid > div:last-child { border-right: none; }
+    @media (max-width: 767px) {
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stats-grid > div:nth-child(2) { border-right: none; }
+      .stats-grid > div:nth-child(odd):not(:nth-child(1):nth-child(2)) { border-right: 1px solid rgba(216,181,109,0.07); }
+    }
+
+    /* ── Accordion ── */
+    .acc-item { border-bottom: 1px solid rgba(216,181,109,0.1); }
+    .acc-trigger {
+      width: 100%; background: none; border: none;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 0; cursor: pointer; gap: 1rem; text-align: left;
+    }
+    .acc-trigger:focus-visible { outline: 2px solid #d8b56d; outline-offset: 2px; border-radius: 4px; }
+    .acc-icon {
+      flex-shrink: 0; color: #d8b56d;
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1);
+    }
+    .acc-trigger[aria-expanded="true"] .acc-icon { transform: rotate(45deg); }
+    .acc-body {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.42s cubic-bezier(0.22,1,0.36,1);
+    }
+    .acc-body.open { max-height: 280px; }
+    .acc-body-inner { padding-bottom: 1.5rem; }
+
+    /* ── Form Inputs ── */
+    .form-input {
+      width: 100%;
+      background: rgba(8,14,26,0.6);
+      border: 1px solid rgba(216,181,109,0.14);
+      border-radius: 10px;
+      padding: 0.8125rem 1rem;
+      color: #c8cdd2;
+      font-size: 0.875rem;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus { border-color: rgba(216,181,109,0.45); }
+    .form-input::placeholder { color: rgba(200,205,210,0.3); }
+    .form-label {
+      display: block;
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(200,205,210,0.45);
+      margin-bottom: 0.45rem;
+    }
+
+    /* ── Footer Links ── */
+    .footer-link {
+      font-size: 0.875rem;
+      color: rgba(200,205,210,0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+      line-height: 1.5;
+    }
+    .footer-link:hover { color: #d8b56d; }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #080e1a; }
+    ::-webkit-scrollbar-thumb { background: rgba(216,181,109,0.2); border-radius: 3px; }
+
+    /* ── Mobile menu ── */
+    #mobile-menu {
+      display: none;
+      border-top: 1px solid rgba(216,181,109,0.1);
+      background: rgba(8,14,26,0.98);
+    }
+    #mobile-menu.open { display: block; }
+
+    /* ── Gold horizontal rule ── */
+    .gold-hr {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(216,181,109,0.35) 50%, transparent 100%);
+      border: none;
+      margin: 0;
+    }
+
+    /* ── Section spacing helper ── */
+    .section { padding: 5.5rem 0; }
+    .section-dark { background: #080e1a; }
+    .section-base { background: #0a1220; }
+
+    /* ── Checklist items ── */
+    .check-item {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+    }
+    .check-dot {
+      flex-shrink: 0;
+      width: 19px; height: 19px;
+      margin-top: 1px;
+      background: linear-gradient(135deg, #ba8e42, #f9edb9);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER / NAVIGATION
+══════════════════════════════════════════ -->
+<header id="navbar">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1;">
+    <div style="display: flex; align-items: center; justify-content: space-between; height: 112px; gap: 1.5rem;">
+
+      <!-- Logo Left -->
+      <a href="#" aria-label="LILM Digital Services Limited — Home" style="flex-shrink: 0;">
+        <img src="brand_assets/LogoLeft.svg" alt="LILM Digital Services Limited" style="height: 87px; display: block;" />
+      </a>
+
+      <!-- Nav Center -->
+      <nav aria-label="Main navigation" style="display: flex; align-items: center; gap: 2.75rem;" class="hidden-mobile">
+        <a href="#"         class="nav-link">Home</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#proof"    class="nav-link">Performance</a>
+        <a href="#audience" class="nav-link">Who We Serve</a>
+        <a href="#contact"  class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Right: CTA + LogoRight -->
+      <div style="display: flex; align-items: center; gap: 1.25rem; flex-shrink: 0;">
+        <a href="#contact" class="btn-primary hidden-mobile">
+          Book a Demo
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M2 6.5h9M11 6.5L7 2.5M11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <img src="brand_assets/LogoRight.svg" alt="" aria-hidden="true" style="height: 67px; display: block; opacity: 0.9;" class="hidden-mobile" />
+        <!-- Mobile toggle -->
+        <button id="mobile-toggle" aria-label="Open navigation menu" aria-expanded="false"
+          style="display: none; padding: 0.5rem; border: none; background: none; color: #c8cdd2; cursor: pointer;" class="show-mobile">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" id="icon-open">
+            <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" id="icon-close" style="display:none;">
+            <path d="M5 5l12 12M17 5L5 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile nav dropdown -->
+  <div id="mobile-menu">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 1.25rem 2rem 1.5rem; display: flex; flex-direction: column; gap: 0.25rem;">
+      <a href="#"         class="nav-link" style="padding: 0.65rem 0; display: block; border-bottom: 1px solid rgba(216,181,109,0.06);">Home</a>
+      <a href="#services" class="nav-link" style="padding: 0.65rem 0; display: block; border-bottom: 1px solid rgba(216,181,109,0.06);">Services</a>
+      <a href="#proof"    class="nav-link" style="padding: 0.65rem 0; display: block; border-bottom: 1px solid rgba(216,181,109,0.06);">Performance</a>
+      <a href="#audience" class="nav-link" style="padding: 0.65rem 0; display: block; border-bottom: 1px solid rgba(216,181,109,0.06);">Who We Serve</a>
+      <a href="#contact"  class="nav-link" style="padding: 0.65rem 0; display: block;">Contact</a>
+      <a href="#contact" class="btn-primary" style="margin-top: 1rem; justify-content: center;">Book a Demo</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  @media (max-width: 900px) {
+    .hidden-mobile { display: none !important; }
+    .show-mobile   { display: flex !important; }
+    .hero-line-break { display: none; }
+  }
+  @media (min-width: 901px) {
+    .show-mobile   { display: none !important; }
+  }
+</style>
+
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section style="position: relative; min-height: 100svh; display: flex; align-items: center; overflow: hidden; padding-top: 112px;" class="noise">
+  <!-- Sparkles Animation -->
+  <canvas id="hero-sparkles-canvas" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;"></canvas>
+  <!-- Layered radial gradients -->
+  <div aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 75% 65% at 65% 50%,rgba(186,142,66,0.07) 0%,transparent 65%),radial-gradient(ellipse 50% 80% at 0% 100%,rgba(8,14,26,0.9) 0%,transparent 70%),radial-gradient(ellipse 90% 40% at 50% 0%,rgba(186,142,66,0.04) 0%,transparent 70%);"></div>
+  </div>
+
+  <!-- Content -->
+  <div style="max-width:1280px;margin:0 auto;padding:4rem 2rem 5rem;position:relative;z-index:1;width:100%;text-align:center;">
+    <div style="max-width:760px;margin:0 auto;">
+
+      <!-- Eyebrow -->
+      <div class="eyebrow anim-up" style="display:flex;align-items:center;justify-content:center;gap:0.75rem;margin-bottom:1.5rem;">
+        <span aria-hidden="true" style="display:inline-block;width:28px;height:1px;background:linear-gradient(90deg,#ba8e42,#f9edb9);"></span>
+        Kenya's Telecom Content Platform
+        <span aria-hidden="true" style="display:inline-block;width:28px;height:1px;background:linear-gradient(270deg,#ba8e42,#f9edb9);"></span>
+      </div>
+
+      <!-- Headline -->
+      <h1 class="anim-up-1"
+        style="font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.875rem,6.5vw,5.375rem);font-weight:300;line-height:1.05;letter-spacing:-0.03em;color:#c8cdd2;margin:0 0 1.625rem;">
+        Connecting Brands<br/>
+        With <em class="gold-text" style="font-style:italic;">High-Performing</em><br class="hero-line-break"/>
+        Content at Scale
+      </h1>
+
+      <!-- Sub -->
+      <p class="anim-up-2"
+        style="font-size:1.05rem;line-height:1.75;color:rgba(200,205,210,0.68);max-width:560px;margin:0 auto 2.625rem;">
+        A unified platform bridging advertisers, publishers, and content ecosystems — maximizing reach, engagement, and monetization through compliant telecom channels across Kenya.
+      </p>
+
+      <!-- CTAs -->
+      <div class="anim-up-3" style="display:flex;flex-wrap:wrap;gap:0.875rem;margin-bottom:4rem;justify-content:center;">
+        <a href="#contact" class="btn-primary">
+          Book a Demo
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M2 6.5h9M11 6.5L7 2.5M11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#services" class="btn-ghost">Explore Services</a>
+      </div>
+
+      <!-- Stats row -->
+      <div class="anim-up-4" style="display:flex;flex-wrap:wrap;gap:0;padding-top:2rem;border-top:1px solid rgba(216,181,109,0.12);justify-content:center;">
+
+        <div style="padding-right:2.5rem;padding-bottom:0.5rem;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2.625rem;font-weight:600;line-height:1;" class="gold-text">5+</div>
+          <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.5);margin-top:0.35rem;">Distribution Partners</div>
+        </div>
+
+        <div aria-hidden="true" style="width:1px;height:44px;margin:auto 0;background:linear-gradient(to bottom,transparent,rgba(216,181,109,0.25),transparent);" class="hidden-mobile"></div>
+
+        <div style="padding:0 2.5rem 0.5rem;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2.625rem;font-weight:600;line-height:1;" class="gold-text">2.78M+</div>
+          <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.5);margin-top:0.35rem;">Monthly Reach</div>
+        </div>
+
+        <div aria-hidden="true" style="width:1px;height:44px;margin:auto 0;background:linear-gradient(to bottom,transparent,rgba(216,181,109,0.25),transparent);" class="hidden-mobile"></div>
+
+        <div style="padding:0 2.5rem 0.5rem;">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2.625rem;font-weight:600;line-height:1;" class="gold-text">13</div>
+          <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.5);margin-top:0.35rem;">Case Studies</div>
+        </div>
+
+        <div aria-hidden="true" style="width:1px;height:44px;margin:auto 0;background:linear-gradient(to bottom,transparent,rgba(216,181,109,0.25),transparent);" class="hidden-mobile"></div>
+
+        <div style="padding:0 0 0.5rem 2.5rem;" class="hidden-mobile">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2.625rem;font-weight:600;line-height:1;" class="gold-text">30d</div>
+          <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.5);margin-top:0.35rem;">Avg. Time to Launch</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom fade -->
+  <div aria-hidden="true" style="position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to bottom,transparent,#0a1220);pointer-events:none;"></div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     PROBLEM SECTION
+══════════════════════════════════════════ -->
+<section id="problem" class="section section-dark" style="position:relative;overflow:hidden;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 2rem;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+      <p class="eyebrow" style="margin-bottom:1rem;">The Challenge</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.125rem,4.5vw,3.375rem);font-weight:400;letter-spacing:-0.03em;color:#c8cdd2;line-height:1.12;margin:0 0 1.125rem;">
+        The Mobile Distribution Gap
+      </h2>
+      <p style="font-size:1rem;line-height:1.72;color:rgba(200,205,210,0.6);max-width:520px;margin:0 auto;">
+        Most businesses leave mobile revenue on the table — not from lack of demand, but because the infrastructure to capture it simply isn't there.
+      </p>
+    </div>
+
+    <!-- Pain point cards 3×2 -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem;margin-bottom:3.5rem;">
+
+      <div class="card reveal">
+        <div class="icon-ring">
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
+            <path d="M9.5 2v15M2 9.5h15M4.5 4.5l10 10M14.5 4.5l-10 10" stroke="#d8b56d" stroke-width="1.25" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.375rem;font-weight:600;color:#f9edb9;margin:0 0 0.6rem;letter-spacing:-0.01em;">Fragmented Distribution</h3>
+        <p style="font-size:0.875rem;line-height:1.72;color:rgba(200,205,210,0.6);margin:0;">Managing content delivery across multiple disconnected channels and telecom networks is inefficient and difficult to scale.</p>
+      </div>
+
+      <div class="card reveal reveal-delay-1">
+        <div class="icon-ring">
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
+            <rect x="2" y="10" width="3" height="7" rx="1" stroke="#d8b56d" stroke-width="1.25"/>
+            <rect x="8" y="6" width="3" height="11" rx="1" stroke="#d8b56d" stroke-width="1.25"/>
+            <rect x="14" y="2" width="3" height="15" rx="1" stroke="#d8b56d" stroke-width="1.25"/>
+          </svg>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.375rem;font-weight:600;color:#f9edb9;margin:0 0 0.6rem;letter-spacing:-0.01em;">Low Engagement Inventory</h3>
+        <p style="font-size:0.875rem;line-height:1.72;color:rgba(200,205,210,0.6);margin:0;">Traditional mobile formats often fail to capture attention and generate meaningful user engagement at scale.</p>
+      </div>
+
+      <div class="card reveal reveal-delay-2">
+        <div class="icon-ring">
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
+            <circle cx="9.5" cy="9.5" r="7" stroke="#d8b56d" stroke-width="1.25"/>
+            <path d="M6.5 9.5h6M9.5 6.5v6" stroke="#d8b56d" stroke-width="1.25" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.375rem;font-weight:600;color:#f9edb9;margin:0 0 0.6rem;letter-spacing:-0.01em;">Poor Targeting</h3>
+        <p style="font-size:0.875rem;line-height:1.72;color:rgba(200,205,210,0.6);margin:0;">Limited audience segmentation and optimization reduce campaign effectiveness and waste ad spend.</p>
+      </div>
+
+      <div class="card reveal">
+        <div class="icon-ring">
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
+            <path d="M3 9.5h13M16 9.5L12 5.5M16 9.5L12 13.5" stroke="#d8b56d" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.375rem;font-weight:600;color:#f9edb9;margin:0 0 0.6rem;letter-spacing:-0.01em;">Slow Campaign Execution</h3>
+        <p style="font-size:0.875rem;line-height:1.72;color:rgba(200,205,210,0.6);margin:0;">Complex deployment processes delay launches and reduce speed-to-market, costing competitive advantage.</p>
+      </div>
+
+      <div class="card reveal reveal-delay-1">
+        <div class="icon-ring">
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
+            <path d="M9.5 2v15M6 5l3.5-3.5L13 5M6 14l3.5 3.5L13 14" stroke="#d8b56d" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.375rem;font-weight:600;color:#f9edb9;margin:0 0 0.6rem;letter-spacing:-0.01em;">Monetization Leakage</h3>
+        <p style="font-size:0.875rem;line-height:1.72;color:rgba(200,205,210,0.6);margin:0;">Revenue is lost through inefficient billing, delayed unsubscribe tracking, and operational gaps.</p>
+      </div>
+
+      <div class="card reveal reveal-delay-2">
+        <div class="icon-ring">
+          <svg width="19" height="19" viewBox="0 0 19 19" fill="none" aria-hidden="true">
+            <path d="M9.5 4l1.5 4.5H16l-4 2.5 1.5 4.5-4-3-4 3 1.5-4.5-4-2.5h5z" stroke="#d8b56d" stroke-width="1.25" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.375rem;font-weight:600;color:#f9edb9;margin:0 0 0.6rem;letter-spacing:-0.01em;">Scaling Challenges</h3>
+        <p style="font-size:0.875rem;line-height:1.72;color:rgba(200,205,210,0.6);margin:0;">Growing premium traffic while maintaining quality and compliance becomes harder without the right infrastructure.</p>
+      </div>
+
+    </div>
+
+    <!-- Pull quote -->
+    <div class="reveal" style="border:1px solid rgba(216,181,109,0.12);border-radius:16px;background:rgba(15,27,49,0.45);padding:2.5rem 2.5rem 2rem;max-width:700px;margin:0 auto;">
+      <svg width="32" height="22" viewBox="0 0 32 22" fill="none" aria-hidden="true" style="margin-bottom:1rem;opacity:0.4;">
+        <path d="M0 22V12.4C0 5.36 4.48 1.12 13.44 0l1.12 2.24C9.6 3.2 7.04 5.6 6.4 9.6H13.44V22H0zm18.56 0V12.4C18.56 5.36 23.04 1.12 32 0l1.12 2.24C28.16 3.2 25.6 5.6 24.96 9.6H32V22H18.56z" fill="#d8b56d"/>
+      </svg>
+      <blockquote style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;font-weight:300;color:#c8cdd2;line-height:1.55;margin:0 0 1rem;">
+        Most content distribution campaigns fail because the connection between the brand and the customer experience is broken.
+      </blockquote>
+      <cite style="font-size:0.6875rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(216,181,109,0.5);font-style:normal;">— Mihir Khetani, CEO LILM Digital Services Limited</cite>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     SERVICES / PLATFORM
+══════════════════════════════════════════ -->
+<section id="services" class="section section-base" style="position:relative;overflow:hidden;">
+  <!-- Dotted wave surface -->
+  <div id="services-dotted" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden;"></div>
+
+  <!-- Ambient glow -->
+  <div aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(ellipse at center,rgba(186,142,66,0.08) 0%,transparent 68%);pointer-events:none;z-index:1;"></div>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 2rem;position:relative;z-index:2;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+      <p class="eyebrow" style="margin-bottom:1rem;">The Platform</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.125rem,4.5vw,3.375rem);font-weight:400;letter-spacing:-0.03em;color:#c8cdd2;line-height:1.12;margin:0 0 0.5rem;">
+        One Platform. Every Channel.
+      </h2>
+      <h2 class="gold-text" style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.125rem,4.5vw,3.375rem);font-weight:400;letter-spacing:-0.03em;line-height:1.12;margin:0 0 1.125rem;">
+        Zero Fragmentation.
+      </h2>
+      <p style="font-size:1rem;line-height:1.72;color:rgba(200,205,210,0.6);max-width:500px;margin:0 auto;">
+        Infrastructure for scalable WAP content distribution and monetization between brands, publishers, and audiences.
+      </p>
+    </div>
+
+    <!-- Card Stack -->
+    <div class="reveal" style="width:100%;">
+      <div id="cstack-stage"
+        tabindex="0"
+        role="region"
+        aria-label="Platform services"
+        style="position:relative;width:100%;height:610px;overflow:visible;">
+        <!-- Spotlight washes -->
+        <div aria-hidden="true" style="pointer-events:none;position:absolute;left:50%;top:1.5rem;width:65%;height:12rem;transform:translateX(-50%);border-radius:9999px;background:rgba(186,142,66,0.06);filter:blur(3rem);z-index:0;"></div>
+        <div aria-hidden="true" style="pointer-events:none;position:absolute;left:50%;bottom:0;width:72%;height:8rem;transform:translateX(-50%);border-radius:9999px;background:rgba(0,0,0,0.25);filter:blur(3rem);z-index:0;"></div>
+      </div>
+      <div id="cstack-dots" style="margin-top:1.75rem;display:flex;align-items:center;justify-content:center;gap:0.625rem;"></div>
+    </div>
+
+    <!-- Positioning line -->
+    <div class="reveal" style="border:1px solid rgba(216,181,109,0.12);border-radius:16px;background:rgba(15,27,49,0.45);padding:2.5rem 2.5rem 2rem;max-width:700px;margin:3rem auto 0;">
+      <svg width="32" height="22" viewBox="0 0 32 22" fill="none" aria-hidden="true" style="margin-bottom:1rem;opacity:0.4;">
+        <path d="M0 22V12.4C0 5.36 4.48 1.12 13.44 0l1.12 2.24C9.6 3.2 7.04 5.6 6.4 9.6H13.44V22H0zm18.56 0V12.4C18.56 5.36 23.04 1.12 32 0l1.12 2.24C28.16 3.2 25.6 5.6 24.96 9.6H32V22H18.56z" fill="#d8b56d"/>
+      </svg>
+      <blockquote style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;font-weight:300;color:#c8cdd2;line-height:1.55;margin:0 0 1rem;">
+        Our acquisition infrastructure helps businesses grow predictably through scalable telecom distribution.
+      </blockquote>
+      <cite style="font-size:0.6875rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(216,181,109,0.5);font-style:normal;">— Karishma Chavda, Director LILM Digital Services Limited</cite>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .cstack-card {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform-style: preserve-3d;
+    border-radius: 16px;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: transform 0.55s cubic-bezier(0.34,1.56,0.64,1), opacity 0.35s ease;
+    will-change: transform;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.55), 0 4px 16px rgba(0,0,0,0.3);
+    border: 1px solid rgba(216,181,109,0.18);
+  }
+  .cstack-inner {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+  }
+  .cstack-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    background: rgba(216,181,109,0.28);
+    transition: background 0.25s, transform 0.25s;
+  }
+  .cstack-dot.on { background: #d8b56d; transform: scale(1.35); }
+  .cstack-dot:hover:not(.on) { background: rgba(216,181,109,0.55); }
+  @media (max-width: 640px) { #cstack-stage { height: 515px !important; } }
+</style>
+
+
+<!-- ══════════════════════════════════════════
+     PROOF & PERFORMANCE
+══════════════════════════════════════════ -->
+<section id="proof" class="section section-dark" style="position:relative;overflow:hidden;">
+  <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 50% 50%,rgba(186,142,66,0.04) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 2rem;position:relative;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+      <p class="eyebrow" style="margin-bottom:1rem;">Results</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.125rem,4.5vw,3.375rem);font-weight:400;letter-spacing:-0.03em;color:#c8cdd2;line-height:1.12;margin:0;">
+        Built for Scale.<br/><em style="font-style:italic;" class="gold-text">Optimized for Performance.</em>
+      </h2>
+    </div>
+
+    <!-- Main stats -->
+    <div class="stats-grid reveal" style="margin-bottom:1.25rem;">
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,3.875rem);font-weight:300;line-height:1;" class="gold-text">3M</div>
+        <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.45);margin-top:0.625rem;line-height:1.5;">Monthly<br/>Impressions</div>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,3.875rem);font-weight:300;line-height:1;" class="gold-text">200K+</div>
+        <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.45);margin-top:0.625rem;line-height:1.5;">Daily Active<br/>Users</div>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,3.875rem);font-weight:300;line-height:1;" class="gold-text">$60K+</div>
+        <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.45);margin-top:0.625rem;line-height:1.5;">Monthly Revenue<br/>Per Product / 90 Days</div>
+      </div>
+      <div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,3.875rem);font-weight:300;line-height:1;" class="gold-text">13</div>
+        <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.45);margin-top:0.625rem;line-height:1.5;">Published<br/>Case Studies</div>
+      </div>
+    </div>
+
+    <!-- Secondary row -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;" class="reveal" id="secondary-stats">
+      <div class="card" style="text-align:center;padding:1.75rem 1.5rem;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.25rem;font-weight:600;color:#f9edb9;line-height:1;">5</div>
+        <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.45);margin-top:0.5rem;">Active Publishers</div>
+      </div>
+      <div class="card" style="text-align:center;padding:1.75rem 1.5rem;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.25rem;font-weight:600;color:#f9edb9;line-height:1;">5</div>
+        <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.45);margin-top:0.5rem;">Enterprise Partners</div>
+      </div>
+      <div class="card" style="text-align:center;padding:1.75rem 1.5rem;">
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2.25rem;font-weight:600;color:#f9edb9;line-height:1;">30 Days</div>
+        <div style="font-size:0.6875rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:rgba(200,205,210,0.45);margin-top:0.5rem;">Average Launch Timeline</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @media (max-width: 600px) {
+    #secondary-stats { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+
+<!-- ══════════════════════════════════════════
+     WHO WE SERVE
+══════════════════════════════════════════ -->
+<section id="audience" class="section section-base">
+  <div style="max-width:1280px;margin:0 auto;padding:0 2rem;">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:3.5rem;" class="reveal">
+      <p class="eyebrow" style="margin-bottom:1rem;">Who We Serve</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.125rem,4.5vw,3.375rem);font-weight:400;letter-spacing:-0.03em;color:#c8cdd2;line-height:1.12;margin:0;">
+        Built for Both Sides<br/><em style="font-style:italic;">of the Ecosystem</em>
+      </h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;" class="audience-grid">
+
+      <!-- Brands -->
+      <div class="card reveal" style="padding:2.5rem;">
+        <p class="eyebrow" style="margin:0 0 1.125rem;color:rgba(216,181,109,0.55);">For Brands</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#f9edb9;margin:0 0 1.625rem;letter-spacing:-0.02em;line-height:1.18;">Reach Your Audience Where They Are</h3>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.875rem;">
+          <li class="check-item">
+            <span class="check-dot" aria-hidden="true">
+              <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1.5 3.5L3.5 5.5L7.5 1.5" stroke="#080e1a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;line-height:1.65;color:rgba(200,205,210,0.78);">Multi-channel distribution across Kenya's top networks</span>
+          </li>
+          <li class="check-item">
+            <span class="check-dot" aria-hidden="true">
+              <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1.5 3.5L3.5 5.5L7.5 1.5" stroke="#080e1a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;line-height:1.65;color:rgba(200,205,210,0.78);">Targeted audience reach by operator and demographic</span>
+          </li>
+          <li class="check-item">
+            <span class="check-dot" aria-hidden="true">
+              <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1.5 3.5L3.5 5.5L7.5 1.5" stroke="#080e1a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;line-height:1.65;color:rgba(200,205,210,0.78);">Real-time product performance analytics dashboard</span>
+          </li>
+          <li class="check-item">
+            <span class="check-dot" aria-hidden="true">
+              <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1.5 3.5L3.5 5.5L7.5 1.5" stroke="#080e1a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;line-height:1.65;color:rgba(200,205,210,0.78);">Faster deployment — launch within 30 days</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Publishers -->
+      <div class="card card-elevated reveal reveal-delay-1" style="padding:2.5rem;">
+        <p class="eyebrow" style="margin:0 0 1.125rem;color:rgba(216,181,109,0.55);">For Publishers</p>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;color:#f9edb9;margin:0 0 1.625rem;letter-spacing:-0.02em;line-height:1.18;">Unlock New Revenue Streams</h3>
+        <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.875rem;">
+          <li class="check-item">
+            <span class="check-dot" aria-hidden="true">
+              <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1.5 3.5L3.5 5.5L7.5 1.5" stroke="#080e1a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;line-height:1.65;color:rgba(200,205,210,0.78);">New monetization via premium brand partnerships</span>
+          </li>
+          <li class="check-item">
+            <span class="check-dot" aria-hidden="true">
+              <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1.5 3.5L3.5 5.5L7.5 1.5" stroke="#080e1a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;line-height:1.65;color:rgba(200,205,210,0.78);">Content partnership programs with leading advertisers</span>
+          </li>
+          <li class="check-item">
+            <span class="check-dot" aria-hidden="true">
+              <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1.5 3.5L3.5 5.5L7.5 1.5" stroke="#080e1a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;line-height:1.65;color:rgba(200,205,210,0.78);">Revenue optimization support from our specialist team</span>
+          </li>
+          <li class="check-item">
+            <span class="check-dot" aria-hidden="true">
+              <svg width="9" height="7" viewBox="0 0 9 7" fill="none"><path d="M1.5 3.5L3.5 5.5L7.5 1.5" stroke="#080e1a" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span style="font-size:0.9rem;line-height:1.65;color:rgba(200,205,210,0.78);">Access to premium traffic and subscription infrastructure</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 760px) {
+    .audience-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+
+<!-- ══════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════ -->
+<section id="faq" class="section section-dark">
+  <div style="max-width:760px;margin:0 auto;padding:0 2rem;">
+
+    <div style="text-align:center;margin-bottom:3rem;" class="reveal">
+      <p class="eyebrow" style="margin-bottom:1rem;">FAQ</p>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.125rem,4vw,3rem);font-weight:400;letter-spacing:-0.03em;color:#c8cdd2;margin:0;">Common Questions</h2>
+    </div>
+
+    <div id="faq-list" class="reveal">
+
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false" aria-controls="acc-1">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:#c8cdd2;">How quickly can products launch?</span>
+          <svg class="acc-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="acc-body" id="acc-1" role="region">
+          <div class="acc-body-inner">
+            <p style="font-size:0.9rem;line-height:1.72;color:rgba(200,205,210,0.62);margin:0;">Most products can be launched within 30 days. Our streamlined onboarding process and pre-built telecom integrations ensure rapid deployment without compromising on quality or compliance.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false" aria-controls="acc-2">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:#c8cdd2;">Which industries do you support?</span>
+          <svg class="acc-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="acc-body" id="acc-2" role="region">
+          <div class="acc-body-inner">
+            <p style="font-size:0.9rem;line-height:1.72;color:rgba(200,205,210,0.62);margin:0;">We specialize in Direct Carrier Billing, Bulk SMS, USSD Services, and Telecom Content Platforms. Whether you're in media, entertainment, finance, or e-commerce — if your business reaches mobile users in Kenya, we can help you reach them better.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false" aria-controls="acc-3">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:#c8cdd2;">How is traffic quality verified?</span>
+          <svg class="acc-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="acc-body" id="acc-3" role="region">
+          <div class="acc-body-inner">
+            <p style="font-size:0.9rem;line-height:1.72;color:rgba(200,205,210,0.62);margin:0;">Traffic is monitored through multiple anti-fraud partners and real-time quality assurance dashboards. Every impression is verified and every subscription is tracked, giving you full confidence in your performance data.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false" aria-controls="acc-4">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:#c8cdd2;">Can the platform integrate with existing systems?</span>
+          <svg class="acc-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="acc-body" id="acc-4" role="region">
+          <div class="acc-body-inner">
+            <p style="font-size:0.9rem;line-height:1.72;color:rgba(200,205,210,0.62);margin:0;">Yes. We provide APIs for seamless integration with existing platforms and workflows. Our technical team handles the integration process, so you don't need to rebuild what you already have.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-trigger" aria-expanded="false" aria-controls="acc-5">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:500;color:#c8cdd2;">What minimum scale is required?</span>
+          <svg class="acc-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="acc-body" id="acc-5" role="region">
+          <div class="acc-body-inner">
+            <p style="font-size:0.9rem;line-height:1.72;color:rgba(200,205,210,0.62);margin:0;">We typically work with partners targeting at least $10,000 in monthly revenue within the first quarter. This ensures we can dedicate the necessary resources to your growth and deliver the ROI you're expecting.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════
+     CONTACT / FINAL CTA
+══════════════════════════════════════════ -->
+<section id="contact" class="section section-base" style="position:relative;overflow:hidden;">
+  <!-- Top gold line -->
+  <hr class="gold-hr" style="position:absolute;top:0;left:0;right:0;margin:0;" aria-hidden="true" />
+  <!-- Background glow -->
+  <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(ellipse 80% 70% at 50% 100%,rgba(186,142,66,0.06) 0%,transparent 70%);pointer-events:none;"></div>
+
+  <div style="max-width:1280px;margin:0 auto;padding:0 2rem;position:relative;">
+    <div style="max-width:920px;margin:0 auto;text-align:center;">
+
+      <div class="reveal">
+        <p class="eyebrow" style="margin-bottom:1.375rem;">Get Started</p>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5.5vw,4.5rem);font-weight:300;letter-spacing:-0.03em;color:#c8cdd2;line-height:1.07;margin:0 0 1.375rem;">
+          Bridge Content, Distribution,<br/>
+          <em class="gold-text" style="font-style:italic;">and Revenue</em><br/>
+          Through One Platform.
+        </h2>
+        <p style="font-size:1rem;line-height:1.72;color:rgba(200,205,210,0.6);max-width:460px;margin:0 auto 2.5rem;">
+          Selective onboarding for premium partners. Applications are reviewed to ensure alignment, quality, and long-term partnership potential.
+        </p>
+        <div style="display:flex;flex-wrap:wrap;gap:0.875rem;justify-content:center;margin-bottom:3.5rem;">
+          <a href="mailto:hello@lilmdigital.com" class="btn-primary" style="font-size:0.875rem;padding:0.9rem 2.125rem;">
+            Schedule a Platform Demo
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+              <path d="M2 6.5h9M11 6.5L7 2.5M11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="tel:+254000000000" class="btn-ghost" style="font-size:0.875rem;padding:0.9rem 2.125rem;">Book a Call</a>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div class="card card-elevated reveal" style="text-align:left;padding:2.75rem;border-radius:20px;max-width:600px;margin:0 auto;">
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.625rem;font-weight:500;color:#f9edb9;margin:0 0 1.75rem;">Send Us a Message</h3>
+        <form onsubmit="handleFormSubmit(event);" style="display:flex;flex-direction:column;gap:1.125rem;">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;" class="form-2col">
+            <div>
+              <label class="form-label" for="f-name">Your Name</label>
+              <input id="f-name" type="text" class="form-input" placeholder="John Mwangi" autocomplete="name" required />
+            </div>
+            <div>
+              <label class="form-label" for="f-company">Company</label>
+              <input id="f-company" type="text" class="form-input" placeholder="Acme Corp" autocomplete="organization" />
+            </div>
+          </div>
+          <div>
+            <label class="form-label" for="f-email">Email Address</label>
+            <input id="f-email" type="email" class="form-input" placeholder="john@company.com" autocomplete="email" required />
+          </div>
+          <div>
+            <label class="form-label" for="f-message">Message</label>
+            <textarea id="f-message" class="form-input" rows="4" placeholder="Tell us about your goals and current challenges..." style="resize:vertical;"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="justify-content:center;margin-top:0.25rem;font-size:0.875rem;">
+            Send Message
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+              <path d="M2 6.5h9M11 6.5L7 2.5M11 6.5L7 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <p id="form-success" role="status" style="display:none;font-size:0.875rem;color:#d8b56d;text-align:center;margin:0;">Message sent — we'll be in touch shortly.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (max-width: 560px) { .form-2col { grid-template-columns: 1fr !important; } }
+</style>
+
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer style="background:#080e1a;background-image:radial-gradient(35% 128px at 50% 0%, rgba(216,181,109,0.084), transparent);border-top:1px solid rgba(216,181,109,0.145);padding:3.5rem 2rem 2rem;position:relative;overflow:hidden;border-radius:2.5rem 2.5rem 0 0;max-width:1536px;margin:0 auto;">
+  <canvas id="footer-sparkles-canvas" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none;opacity:0.55;border-radius:2.5rem 2.5rem 0 0;"></canvas>
+
+  <!-- Top centre glow line -->
+  <div aria-hidden="true" style="position:absolute;top:0;left:50%;width:33%;height:1px;background:rgba(216,181,109,0.30);transform:translateX(-50%) translateY(-50%);border-radius:9999px;filter:blur(3px);"></div>
+
+  <div style="position:relative;z-index:1;">
+
+    <!-- Main grid: brand (1/3) + links (2/3) -->
+    <div class="footer-main-grid" style="display:grid;grid-template-columns:1fr;gap:2.5rem;margin-bottom:2.5rem;">
+
+      <!-- Brand column -->
+      <div class="footer-anim" style="--fd:0.05s">
+        <img src="brand_assets/LogoLeft.svg" alt="LILM Digital Services Limited" style="height:50px;display:block;margin-bottom:1.25rem;" />
+        <p style="font-size:0.8125rem;line-height:1.75;color:rgba(200,205,210,0.38);max-width:280px;margin:0;">
+          © 2025 LILM Digital Services Limited.<br>All rights reserved.
+        </p>
+      </div>
+
+      <!-- Link columns: 2-col on mobile, 4-col on md+ -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="footer-links-grid">
+
+        <!-- Services -->
+        <div class="footer-anim" style="--fd:0.15s">
+          <p class="eyebrow" style="margin:0 0 1rem;font-size:0.6875rem;letter-spacing:0.1em;">Services</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.55rem;">
+            <li><a href="#services" class="footer-link">Content Syndication</a></li>
+            <li><a href="#services" class="footer-link">USSD &amp; SMS</a></li>
+            <li><a href="#services" class="footer-link">Carrier Billing</a></li>
+            <li><a href="#services" class="footer-link">Audience Targeting</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div class="footer-anim" style="--fd:0.25s">
+          <p class="eyebrow" style="margin:0 0 1rem;font-size:0.6875rem;letter-spacing:0.1em;">Company</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.55rem;">
+            <li><a href="#audience" class="footer-link">About Us</a></li>
+            <li><a href="#proof"    class="footer-link">Case Studies</a></li>
+            <li><a href="#faq"      class="footer-link">FAQ</a></li>
+            <li><a href="#contact"  class="footer-link">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Resources -->
+        <div class="footer-anim" style="--fd:0.35s">
+          <p class="eyebrow" style="margin:0 0 1rem;font-size:0.6875rem;letter-spacing:0.1em;">Resources</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.55rem;">
+            <li><a href="#"        class="footer-link">Blog</a></li>
+            <li><a href="#contact" class="footer-link">Partner With Us</a></li>
+            <li><a href="#"        class="footer-link">Privacy Policy</a></li>
+            <li><a href="#"        class="footer-link">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Links -->
+        <div class="footer-anim" style="--fd:0.45s">
+          <p class="eyebrow" style="margin:0 0 1rem;font-size:0.6875rem;letter-spacing:0.1em;">Social Links</p>
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0.55rem;">
+            <li>
+              <a href="#" class="footer-link footer-social-link">
+                <!-- Facebook -->
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                Facebook
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer-link footer-social-link">
+                <!-- Instagram -->
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                Instagram
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer-link footer-social-link">
+                <!-- YouTube -->
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.5C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+                YouTube
+              </a>
+            </li>
+            <li>
+              <a href="#" class="footer-link footer-social-link">
+                <!-- LinkedIn -->
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  @media (min-width: 768px) {
+    footer .footer-links-grid { grid-template-columns: repeat(4, 1fr) !important; }
+  }
+  @media (min-width: 1024px) {
+    footer .footer-main-grid { grid-template-columns: 1fr 2fr !important; }
+  }
+  .footer-social-link { display: inline-flex !important; align-items: center; gap: 0.375rem; }
+  .footer-anim {
+    opacity: 0;
+    transform: translateY(-8px);
+    filter: blur(4px);
+    transition: opacity 0.8s ease var(--fd, 0.1s), transform 0.8s ease var(--fd, 0.1s), filter 0.8s ease var(--fd, 0.1s);
+  }
+  .footer-anim.in {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0px);
+  }
+</style>
+<script>
+(function () {
+  var els = document.querySelectorAll('footer .footer-anim');
+  if (!els.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  els.forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+<style>
+  @media (max-width: 760px) {
+    .footer-grid { grid-template-columns: 1fr 1fr !important; }
+    .footer-grid > div:first-child { grid-column: span 2; }
+  }
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr !important; }
+    .footer-grid > div:first-child { grid-column: span 1; }
+  }
+</style>
+
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+  // ── Nav scroll state ──────────────────────
+  const navbar = document.getElementById('navbar');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        navbar.classList.toggle('scrolled', window.scrollY > 24);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // ── Mobile menu ───────────────────────────
+  const toggle   = document.getElementById('mobile-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('icon-open');
+  const iconClose= document.getElementById('icon-close');
+
+  toggle.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+    iconOpen.style.display  = isOpen ? 'none'  : '';
+    iconClose.style.display = isOpen ? ''      : 'none';
+  });
+
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      iconOpen.style.display  = '';
+      iconClose.style.display = 'none';
+    });
+  });
+
+  // ── Scroll reveal ─────────────────────────
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -36px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ── Accordion ─────────────────────────────
+  document.querySelectorAll('.acc-trigger').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body   = btn.nextElementSibling;
+      const isOpen = body.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.acc-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.acc-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+
+      // Toggle this one
+      if (!isOpen) {
+        body.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // ── Form submit ───────────────────────────
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const success = document.getElementById('form-success');
+    success.style.display = 'block';
+    e.target.querySelectorAll('input,textarea').forEach(el => el.value = '');
+    setTimeout(() => { success.style.display = 'none'; }, 5000);
+  }
+</script>
+
+<!-- ══════════════════════════════════════════
+     HERO SPARKLES ANIMATION
+══════════════════════════════════════════ -->
+<script>
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const canvas = document.getElementById('hero-sparkles-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const section = canvas.parentElement;
+
+  /* Brand gold palette as [r,g,b] triples */
+  var GOLD = [
+    [186, 142,  66],  /* #ba8e42 rich gold   */
+    [200, 169,  76],  /* mid-warm            */
+    [216, 181, 109],  /* #d8b56d mid gold    */
+    [249, 237, 185],  /* #f9edb9 light gold  */
+    [255, 246, 207],  /* #fff6cf cream gold  */
+  ];
+  var COUNT = 180;
+  var particles = [];
+
+  function resize() {
+    canvas.width  = section.offsetWidth;
+    canvas.height = section.offsetHeight || window.innerHeight;
+  }
+
+  function Particle() {
+    var c = GOLD[Math.floor(Math.random() * GOLD.length)];
+    this.x  = Math.random() * canvas.width;
+    this.y  = Math.random() * canvas.height;
+    this.r  = Math.random() * 1.96 + 0.42;
+    this.a  = 0.55 + Math.random() * 0.4;
+    this.c  = c;
+    this.vx = (Math.random() - 0.5) * 0.392;
+    this.vy = (Math.random() - 0.5) * 0.392;
+    this.va = (Math.random() * 0.0182 + 0.0042) * (Math.random() < 0.5 ? 1 : -1);
+  }
+  Particle.prototype.tick = function() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.a += this.va;
+    if (this.a <= 0.3 || this.a >= 0.96) this.va *= -1;
+    if (this.x < -4) this.x = canvas.width + 4;
+    if (this.x > canvas.width + 4) this.x = -4;
+    if (this.y < -4) this.y = canvas.height + 4;
+    if (this.y > canvas.height + 4) this.y = -4;
+  };
+  Particle.prototype.draw = function() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, 6.283);
+    ctx.fillStyle = 'rgba(' + this.c[0] + ',' + this.c[1] + ',' + this.c[2] + ',' + this.a.toFixed(3) + ')';
+    ctx.fill();
+  };
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  for (var i = 0; i < COUNT; i++) particles.push(new Particle());
+
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < particles.length; i++) {
+      particles[i].tick();
+      particles[i].draw();
+    }
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
+
+<!-- ══════════════════════════════════════════
+     FOOTER SPARKLES ANIMATION
+══════════════════════════════════════════ -->
+<script>
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var canvas = document.getElementById('footer-sparkles-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  var footer = canvas.parentElement;
+
+  var GOLD = [
+    [186, 142,  66],
+    [200, 169,  76],
+    [216, 181, 109],
+    [249, 237, 185],
+    [255, 246, 207],
+  ];
+  var COUNT = 130;
+  var particles = [];
+
+  function resize() {
+    canvas.width  = footer.offsetWidth;
+    canvas.height = footer.offsetHeight || 320;
+  }
+
+  function Particle() {
+    var c = GOLD[Math.floor(Math.random() * GOLD.length)];
+    this.x  = Math.random() * canvas.width;
+    this.y  = Math.random() * canvas.height;
+    this.r  = Math.random() * 1.6 + 0.3;
+    this.a  = Math.random() * 0.45;
+    this.c  = c;
+    this.vx = (Math.random() - 0.5) * 0.22;
+    this.vy = (Math.random() - 0.5) * 0.22;
+    this.maxA = 0.08 + Math.random() * 0.37;
+    this.va = (Math.random() * 0.022 + 0.006) * (Math.random() < 0.5 ? 1 : -1);
+  }
+  Particle.prototype.tick = function() {
+    this.x += this.vx;
+    this.y += this.vy;
+    this.a += this.va;
+    if (this.a <= 0 || this.a >= this.maxA) this.va *= -1;
+    if (this.x < -4) this.x = canvas.width + 4;
+    if (this.x > canvas.width + 4) this.x = -4;
+    if (this.y < -4) this.y = canvas.height + 4;
+    if (this.y > canvas.height + 4) this.y = -4;
+  };
+  Particle.prototype.draw = function() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.r, 0, 6.283);
+    ctx.fillStyle = 'rgba(' + this.c[0] + ',' + this.c[1] + ',' + this.c[2] + ',' + this.a.toFixed(3) + ')';
+    ctx.fill();
+  };
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  for (var i = 0; i < COUNT; i++) particles.push(new Particle());
+
+  function loop() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (var i = 0; i < particles.length; i++) {
+      particles[i].tick();
+      particles[i].draw();
+    }
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
+
+<!-- ══════════════════════════════════════════
+     CARD STACK — PLATFORM SECTION
+══════════════════════════════════════════ -->
+<script>
+(function () {
+  var CARDS = [
+    {
+      num: '01',
+      title: 'Content Syndication &amp; WAP Distribution',
+      desc: "Streamlined publishing of premium text, web links, and rich media optimized for mobile data networks across Kenya’s leading telecom operators.",
+      tags: ['Rich Media', 'WAP Publishing', 'Mobile Networks'],
+      bg: 'linear-gradient(150deg,#152040 0%,#0d1629 60%,#080e1a 100%)',
+      accent: 'linear-gradient(90deg,transparent,#d8b56d 40%,#f9edb9 60%,transparent)',
+      watermark: true,
+    },
+    {
+      num: '02',
+      title: 'USSD &amp; SMS Short Code Management',
+      desc: 'Automated interactive USSD experiences and branded premium-rate SMS services for enterprise messaging at scale.',
+      tags: [],
+      bg: 'linear-gradient(135deg,#0a1220 0%,#0d1629 50%,#111d35 100%)',
+      accent: 'linear-gradient(90deg,transparent,#ba8e42 40%,#d8b56d 60%,transparent)',
+      watermark: false,
+    },
+    {
+      num: '03',
+      title: 'Carrier-Grade Billing &amp; Subscriptions',
+      desc: 'Seamless monetization through secure mobile money integrations and telecom operator airtime billing.',
+      tags: [],
+      bg: 'linear-gradient(160deg,#080e1a 0%,#111d35 55%,#0d1629 100%)',
+      accent: 'linear-gradient(90deg,transparent,#d8b56d 40%,#fff6cf 60%,transparent)',
+      watermark: false,
+    },
+    {
+      num: '04',
+      title: 'Audience Targeting &amp; Network Routing',
+      desc: 'Precision targeting based on operator demographics, device profiles, and user behavior patterns.',
+      tags: [],
+      bg: 'linear-gradient(140deg,#0d1629 0%,#152040 50%,#0a1220 100%)',
+      accent: 'linear-gradient(90deg,transparent,#ba8e42 40%,#f9edb9 60%,transparent)',
+      watermark: false,
+    },
+    {
+      num: '05',
+      title: 'Real-Time Performance Analytics',
+      desc: 'Complete visibility into traffic volumes, delivery rates, billing performance, subscription metrics, and unsubscribe activity.',
+      tags: [],
+      bg: 'linear-gradient(125deg,#111d35 0%,#080e1a 50%,#0d1629 100%)',
+      accent: 'linear-gradient(90deg,transparent,#d8b56d 40%,#ba8e42 60%,transparent)',
+      watermark: false,
+    },
+  ];
+
+  function buildCardHTML(c) {
+    var tagsHTML = c.tags.length
+      ? '<div style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:1rem;">' +
+          c.tags.map(function(t){ return '<span class="gold-tag">'+t+'</span>'; }).join('') +
+        '</div>'
+      : '';
+    var wm = c.watermark
+      ? '<div aria-hidden="true" style="position:absolute;top:-35px;right:-30px;opacity:0.06;pointer-events:none;"><img src="brand_assets/LogoRight.svg" alt="" style="width:190px;"></div>'
+      : '';
+    return (
+      '<div style="position:absolute;inset:0;background:'+c.bg+';"></div>' +
+      wm +
+      '<div aria-hidden="true" style="position:absolute;top:0;left:0;right:0;height:2px;background:'+c.accent+';"></div>' +
+      '<div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(8,14,26,0.8) 0%,transparent 55%);pointer-events:none;"></div>' +
+      '<div style="position:relative;z-index:1;padding:1.75rem;height:100%;display:flex;flex-direction:column;justify-content:flex-end;box-sizing:border-box;">' +
+        '<p class="eyebrow" style="margin:0 0 0.6rem;color:rgba(216,181,109,0.5);">'+c.num+'</p>' +
+        '<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:1.375rem;font-weight:600;color:#f9edb9;margin:0 0 0.5rem;letter-spacing:-0.02em;line-height:1.22;">'+c.title+'</h3>' +
+        '<p style="font-size:0.8125rem;line-height:1.72;color:rgba(200,205,210,0.7);margin:0;">'+c.desc+'</p>' +
+        tagsHTML +
+      '</div>'
+    );
+  }
+
+  var stage  = document.getElementById('cstack-stage');
+  var dotsEl = document.getElementById('cstack-dots');
+  if (!stage || !dotsEl) return;
+
+  /* sizing */
+  var vw = window.innerWidth;
+  var CARD_W = vw > 680 ? 480 : vw > 420 ? 340 : 270;
+  var CARD_H = vw > 680 ? 480 : 410;
+  var MAX_OFF = vw > 680 ? 3 : 2;
+  var SPREAD  = vw > 680 ? 44 : 28;
+  var SPACING = Math.round(CARD_W * (1 - 0.48));
+  var STEP    = MAX_OFF > 0 ? SPREAD / MAX_OFF : 0;
+  var LEN     = CARDS.length;
+  var active  = 0;
+  var hovered = false;
+
+  stage.style.perspective = '1100px';
+
+  /* build cards */
+  var cardEls = CARDS.map(function (c, i) {
+    var card  = document.createElement('div');
+    card.className = 'cstack-card';
+    card.style.width  = CARD_W + 'px';
+    card.style.height = CARD_H + 'px';
+
+    var inner = document.createElement('div');
+    inner.className = 'cstack-inner';
+    inner.innerHTML = buildCardHTML(c);
+    card.appendChild(inner);
+
+    card.addEventListener('click', function () { if (i !== active) go(i); });
+    stage.appendChild(card);
+    return card;
+  });
+
+  /* build dots */
+  var dotEls = CARDS.map(function (c, i) {
+    var btn = document.createElement('button');
+    btn.className = 'cstack-dot';
+    btn.setAttribute('aria-label', 'Go to ' + c.num);
+    btn.addEventListener('click', function () { go(i); });
+    dotsEl.appendChild(btn);
+    return btn;
+  });
+
+  /* signed offset with loop wrap */
+  function wrapOff(i, act) {
+    var raw = i - act;
+    if (LEN <= 1) return raw;
+    var alt = raw > 0 ? raw - LEN : raw + LEN;
+    return Math.abs(alt) < Math.abs(raw) ? alt : raw;
+  }
+
+  function go(idx) {
+    active = ((idx % LEN) + LEN) % LEN;
+    refresh();
+  }
+
+  function refresh() {
+    cardEls.forEach(function (card, i) {
+      var inner = card.querySelector('.cstack-inner');
+      var off = wrapOff(i, active);
+      var abs = Math.abs(off);
+      var vis = abs <= MAX_OFF;
+
+      card.style.opacity       = vis ? '1' : '0';
+      card.style.pointerEvents = vis ? 'auto' : 'none';
+      card.style.zIndex        = String(100 - abs);
+      card.style.cursor        = off === 0 ? 'grab' : 'pointer';
+
+      var x     = off * SPACING;
+      var y     = abs * 10;
+      var lift  = off === 0 ? -24 : 0;
+      var scale = off === 0 ? 1.03 : 0.93;
+      var rotX  = off === 0 ? 0 : 12;
+      var rotZ  = off * STEP;
+      var z     = -abs * 140;
+
+      card.style.transform =
+        'translateX(calc(-50% + '+x+'px)) '+
+        'translateY('+(y+lift)+'px) '+
+        'rotateX('+rotX+'deg) '+
+        'rotateZ('+rotZ+'deg) '+
+        'scale('+scale+')';
+      inner.style.transform = 'translateZ('+z+'px)';
+    });
+    dotEls.forEach(function (d, i) {
+      d.classList.toggle('on', i === active);
+    });
+  }
+
+  /* drag / swipe */
+  var dragX = 0, dragging = false;
+  function dStart(e) {
+    if (e.target.closest('.cstack-card') !== cardEls[active]) return;
+    dragging = true;
+    dragX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+    cardEls[active].style.transition = 'none';
+    cardEls[active].style.cursor = 'grabbing';
+  }
+  function dMove(e) {
+    if (!dragging) return;
+    var cx = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+    var dx = cx - dragX;
+    var inner = cardEls[active].querySelector('.cstack-inner');
+    cardEls[active].style.transform =
+      'translateX(calc(-50% + '+dx+'px)) translateY(-24px) rotateZ('+(dx*0.02)+'deg) scale(1.03)';
+    inner.style.transform = 'translateZ(0px)';
+  }
+  function dEnd(e) {
+    if (!dragging) return;
+    dragging = false;
+    cardEls[active].style.transition = '';
+    cardEls[active].style.cursor = 'grab';
+    var cx = e.type === 'touchend' ? e.changedTouches[0].clientX : e.clientX;
+    var dx = cx - dragX;
+    var threshold = Math.min(140, CARD_W * 0.22);
+    if (dx >  threshold) go(active - 1);
+    else if (dx < -threshold) go(active + 1);
+    else refresh();
+  }
+
+  stage.addEventListener('mousedown',  dStart);
+  stage.addEventListener('touchstart', dStart, { passive: true });
+  window.addEventListener('mousemove', dMove);
+  window.addEventListener('touchmove', dMove, { passive: true });
+  window.addEventListener('mouseup',   dEnd);
+  window.addEventListener('touchend',  dEnd);
+
+  /* keyboard */
+  stage.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft')  go(active - 1);
+    if (e.key === 'ArrowRight') go(active + 1);
+  });
+
+  /* auto-advance */
+  stage.addEventListener('mouseenter', function(){ hovered = true; });
+  stage.addEventListener('mouseleave', function(){ hovered = false; });
+  setInterval(function () { if (!hovered && !dragging) go(active + 1); }, 3200);
+
+  refresh();
+})();
+</script>
+
+<!-- ══════════════════════════════════════════
+     DOTTED WAVE SURFACE — PLATFORM SECTION
+══════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script>
+(function () {
+  if (typeof THREE === 'undefined') return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var container = document.getElementById('services-dotted');
+  if (!container) return;
+
+  var SEPARATION = 150;
+  var AMOUNTX    = 40;
+  var AMOUNTY    = 60;
+
+  function getSize() {
+    return { w: container.offsetWidth, h: container.offsetHeight };
+  }
+
+  var sz   = getSize();
+  var scene = new THREE.Scene();
+
+  var camera = new THREE.PerspectiveCamera(60, sz.w / sz.h, 1, 10000);
+  camera.position.set(0, 380, 1280);
+
+  var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(sz.w, sz.h);
+  renderer.setClearColor(0x000000, 0);
+  container.appendChild(renderer.domElement);
+
+  /* Build particle geometry */
+  var positions = [];
+  var colors    = [];
+  /* Gold tones cycling by position for a subtle two-tone shimmer */
+  var goldA = [186/255, 142/255, 66/255];   /* #ba8e42 */
+  var goldB = [216/255, 181/255, 109/255];  /* #d8b56d */
+
+  for (var ix = 0; ix < AMOUNTX; ix++) {
+    for (var iy = 0; iy < AMOUNTY; iy++) {
+      positions.push(
+        ix * SEPARATION - (AMOUNTX * SEPARATION) / 2,
+        0,
+        iy * SEPARATION - (AMOUNTY * SEPARATION) / 2
+      );
+      var g = (ix + iy) % 2 === 0 ? goldA : goldB;
+      colors.push(g[0], g[1], g[2]);
+    }
+  }
+
+  var geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+  geometry.setAttribute('color',    new THREE.Float32BufferAttribute(colors, 3));
+
+  var material = new THREE.PointsMaterial({
+    size: 7,
+    vertexColors: true,
+    transparent: true,
+    opacity: 0.45,
+    sizeAttenuation: true,
+  });
+
+  var points = new THREE.Points(geometry, material);
+  scene.add(points);
+
+  var count = 0;
+  var posArr = geometry.attributes.position.array;
+  var animId;
+
+  function animate() {
+    animId = requestAnimationFrame(animate);
+
+    var i = 0;
+    for (var ix = 0; ix < AMOUNTX; ix++) {
+      for (var iy = 0; iy < AMOUNTY; iy++) {
+        posArr[i * 3 + 1] =
+          Math.sin((ix + count) * 0.3) * 50 +
+          Math.sin((iy + count) * 0.5) * 50;
+        i++;
+      }
+    }
+    geometry.attributes.position.needsUpdate = true;
+    renderer.render(scene, camera);
+    count += 0.07;
+  }
+
+  animate();
+
+  /* Respond to section resize */
+  var ro = new ResizeObserver(function () {
+    var s = getSize();
+    if (s.w === 0 || s.h === 0) return;
+    camera.aspect = s.w / s.h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(s.w, s.h);
+  });
+  ro.observe(container);
+})();
+</script>
+
+</body>
+</html>
